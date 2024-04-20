@@ -14,19 +14,19 @@ public class PersonajeController {
     private PersonajeRepository personajeRepository;
     @GetMapping
     public List<Personaje> getAllPersonajes(){return  personajeRepository.findAll();}
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     public Personaje getPersonaje(@PathVariable Long id){return personajeRepository.findById(id).orElse(null);}
-    @PostMapping("{/id}")
+    @PostMapping("/{id}")
     public Personaje postPersonaje(@RequestBody Personaje personaje){
         return personajeRepository.save(personaje);
     }
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     public Personaje updatePersonaje(@PathVariable Long id, @RequestBody Personaje personaje) {
         personaje.setId(id);
         return personajeRepository.save(personaje);
     }
-    @DeleteMapping("/{id}")
-    public void Personaje deletePersonaje(@PathVariable Long id){
+    @DeleteMapping("/id")
+    public void deletePersonaje(Long id){
         personajeRepository.deleteById(id);
     }
 }
