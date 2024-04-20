@@ -1,1 +1,35 @@
+ELABORADO POR: Juan Felipe Reales de la Hoz
+               Yazmin Lizeth Cano Suarez
 Bienvenido a nuestra página dedicada a Baki, la electrizante serie de artes marciales que sigue la historia de Baki Hanma
+
+EJECUCION DEL PROYECTO 
+1. Clonar o descargar el repositorio 
+2. Configurar la base de datos 
+asegurese de tenere una base de datos con conexiona a  application.properties. 
+3. Abrir en ualquier editor de codigo que cuente con java 
+
+MODELS
+Atributos:
+Long (id)= numero unico de identificacion del personaje en la base de datos
+String (name)= nombre del personaje de la serie
+int (age)= edad del personaje
+String (gender)= genero del personaje
+int (height) = altura del personaje
+String (origin)=pais de origen del personaje
+String (power)= habilidad destacada del personaje
+String (classification)= informacion del personaje
+
+CONTROLADORES 
+
+controlador base (personajescontroller)
+En este controlador se manejan las operaciones relacionadas con los personajes 
+GET /PERSONAJE : Obtien datos de los personajes.
+GET /PERSONAJE /{/Id} : Obtiene un personaje por su ID.
+POST / PERSONAJE: Crea un nuevo personaje.
+PUT /PERSONAJE{/Id} : Actualiza un personaje existente por su ID.
+DELETE /PERSONAJE/{/Id} : Elimina un elimina un personaje por su ID.
+
+
+
+
+
