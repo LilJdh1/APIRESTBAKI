@@ -25,7 +25,7 @@ public class PersonajeController {
         personaje.setId(id);
         return personajeRepository.save(personaje);
     }
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public void deletePersonaje(Long id){
         personajeRepository.deleteById(id);
     }
