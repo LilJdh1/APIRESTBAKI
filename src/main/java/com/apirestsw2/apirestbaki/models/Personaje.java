@@ -16,7 +16,7 @@ public class Personaje {
     @Id
     @GeneratedValue
     private Long id;
-    private String name;
+    private String nombre;
     private int age;
     private String gender;
     private int height;
