@@ -10,17 +10,26 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/competencias")
-public class CompeController {
+public class CompeController extends ApiBaseController{
     @Autowired
-    private CompeRepository compeRepository;
+    private CompeService compeService;
 
     @GetMapping
-    public List<Compe> getAllCompetencias(){
-        return compeRepository.findAll();
+    public List<Compe> getAllCompe(){
+        return compeService.ListAll();
     }
 
-    @GetMapping("/{id}")
-    public Compe getCompeByID(@PathVariable Long id){
-        return compeRepository.findById(id).orElse(null);
+    @PutMapping("/{id}")
+    public void updateCompe(@PathVariable Long id, @RequestBody Compe compe) {
+        compe.setId(id);
+        compeService.save(compe);
+    }
+    @PostMapping
+    public void createCompe(@RequestBody Compe compe) {
+        compeService.save(compe);
+    }
+    @DeleteMapping("/{id}")
+    public void deleteCompe(@PathVariable Long id) {
+        compeService.delete(id);
     }
 }

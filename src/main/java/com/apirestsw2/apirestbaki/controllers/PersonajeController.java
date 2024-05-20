@@ -1,5 +1,7 @@
 package com.apirestsw2.apirestbaki.controllers;
 
+import com.apirestsw2.apirestbaki.Service.PersonajeService;
+import com.apirestsw2.apirestbaki.models.Compe;
 import com.apirestsw2.apirestbaki.models.Personaje;
 import com.apirestsw2.apirestbaki.repositories.PersonajeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,24 +11,24 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/personajes")
-public class PersonajeController {
+@CrossOrigin(origins = "http://localhost:5173")
+public class PersonajeController extends ApiBaseController{
     @Autowired
-    private PersonajeRepository personajeRepository;
+    private PersonajeService personajeService;
     @GetMapping
-    public List<Personaje> getAllPersonajes(){return  personajeRepository.findAll();}
+    public List<Personaje> getAllPersonajes(){return  personajeService.ListAll();}
     @GetMapping("/{id}")
-    public Personaje getPersonaje(@PathVariable Long id){return personajeRepository.findById(id).orElse(null);}
-    @PostMapping("/{id}")
-    public Personaje postPersonaje(@RequestBody Personaje personaje){
-        return personajeRepository.save(personaje);
+    public Personaje getPersonaje(@PathVariable Long id){return personajeService.get(id);}
+    @PostMapping
+    public void createCompe(@RequestBody Personaje personaje) {
+        personajeService.save(personaje);
     }
     @PutMapping("/{id}")
-    public Personaje updatePersonaje(@PathVariable Long id, @RequestBody Personaje personaje) {
+    public void updatePersonaje(@PathVariable Long id, @RequestBody Personaje personaje) {
         personaje.setId(id);
-        return personajeRepository.save(personaje);
-    }
+        personajeService.save(personaje);}
     @DeleteMapping("/{id}")
-    public void deletePersonaje(Long id){
-        personajeRepository.deleteById(id);
+    public void deletePersonaje(@PathVariable Long id){
+        personajeService.delete(id);
     }
 }
