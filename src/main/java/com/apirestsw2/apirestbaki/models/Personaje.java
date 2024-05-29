@@ -11,7 +11,7 @@ public class Personaje {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String namesP;
     private int age;
     private String gender;
     private int height;
